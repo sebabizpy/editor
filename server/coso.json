@@ -1,0 +1,30 @@
+{
+    "host": "23.125.42.165",
+    "name": "f1",
+    "floor": "",
+    "site": "123",
+    "room": "",
+    "rack": "",
+    "country": "",
+    "credential": {
+        "id": 20
+    },
+    "ownersGroup": {
+        "id": 1
+    },
+    "supportGroup": {
+        "id": 3
+    }
+} 
+
+
+const c: Connection = await getOrCreateConnection();
+try {
+  const query = `update a1rev.issue set a1rev.issue.status = ${st}  where run_id = ${run_id}`
+  errorLog(`[getRemediationByAssetId] query ${query}`);
+  const result = await c.query(query);
+  return result[0];
+} catch (e) {
+  errorLog(`[getRemediationByAssetId] Error ${e}`);
+  return null;
+}
